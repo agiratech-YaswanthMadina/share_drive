@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Vehicle Information</title>
+    <link rel="stylesheet" href="vehicle_info.css">
+</head>
+<body>
+    <h1>Add Vehicle Information</h1>
+    <form id="vehicleForm">
+        <label for="model">Model:</label>
+        <input type="text" autocomplete="off" id="model" name="model" required><br>
+        
+        <label for="year">Year:</label>
+        <input type="number" autocomplete="off" id="year" name="year" min="1900" max="2099" required><br>
+        
+        <label for="color">Color:</label>
+        <input type="text" autocomplete="off" id="color" name="color" required><br>
+        
+        <button class="button" type="submit">Submit</button>
+    </form>
+    
+
+</body>
+</html>
+<script src="vehicle_info.js"></script>

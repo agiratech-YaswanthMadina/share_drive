@@ -5,21 +5,23 @@ import React from "react";
 import AboutUs from "./pages/AboutUs";
 import ContactUS from "./pages/ContactUs";
 import OurBlog from "./pages/OurBlog";
-
+import Bookride from "./pages/bookride";
+import Offerride from "./pages/offerride";
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/About-us" element={<AboutUs />} />
-          <Route path="/Contact-us" element={<ContactUS />} />
-          <Route path="/Blog" element={<OurBlog />} />
-        </Routes>
-      </div>
-    </div>
+      {/* <Bookride /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/About-us" element={<AboutUs />} />
+        <Route path="/Contact-us" element={<ContactUS />} />
+        <Route path="/Blog" element={<OurBlog />} />
+        <Route path="/bookRide"element={<Bookride/>}/>
+        <Route path="/offerRide"element={<Offerride/>}/>
+      </Routes>
+    </>
   );
 }
 

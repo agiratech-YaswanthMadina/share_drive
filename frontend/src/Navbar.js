@@ -8,9 +8,9 @@ export default function Navbar() {
         Share Drive
       </Link>
       <ul>
-        <CustomLink to="/About-us">About us</CustomLink>
-        <CustomLink to="/Contact-us">Contact us</CustomLink>
-        <CustomLink to="/Blog">Our Blog</CustomLink>
+        <CustomLink className="element" to="/About-us">About us</CustomLink>
+        <CustomLink className="element" to="/Contact-us">Contact us</CustomLink>
+        <CustomLink className="element" to="/Blog">Our Blog</CustomLink>
       </ul>
     </nav>
   )

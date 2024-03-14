@@ -8,11 +8,11 @@ let transporter = nodemailer.createTransport({
         pass: 'bmct egzh pqca jzsp'
     }
 });
-
+ 
 // Setup email data
 let mailOptions = {
     from: 'yaswanth35000@gmail.com',
-    to: 'logachan08@gmail.com',
+    to: 'devipriyamohanraj01@gmail.com',
     subject: 'Test Email',
     text: 'This is a test email from Node.js'
 };

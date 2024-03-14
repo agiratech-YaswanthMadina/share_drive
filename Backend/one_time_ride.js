@@ -38,7 +38,7 @@ app.listen(PORT, () => {
 });
 
 
-exports.a={
-    name:"lkjhgfcd",
-    email:"likujhgfd@jkdnf.com"
-}
+// exports.a={
+//     name:"lkjhgfcd",
+//     email:"likujhgfd@jkdnf.com"
+// }

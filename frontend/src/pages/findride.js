@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./bookride.css"; 
 
-function Bookride() {
+function FindRide() {
   const [rides, setRides] = useState([]);
 
   useEffect(() => {
@@ -58,4 +58,4 @@ function Bookride() {
   );
 }
 
-export default Bookride;
+export default FindRide;

@@ -5,7 +5,7 @@ import React from "react";
 import AboutUs from "./pages/AboutUs";
 import ContactUS from "./pages/ContactUs";
 import OurBlog from "./pages/OurBlog";
-import Bookride from "./pages/bookride";
+import Bookride from "./pages/findride";
 import Offerride from "./pages/offerride";
 
 function App() {

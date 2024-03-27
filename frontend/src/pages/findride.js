@@ -1,60 +1,67 @@
 import React, { useState, useEffect } from "react";
-import "./bookride.css"; 
+import "./findride.css";
+import Axios from "axios"
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function FindRide() {
   const [rides, setRides] = useState([]);
-
+  const driverEmail=""
+  var RideId = "";
   useEffect(() => {
-    fetch("http://localhost:8001/api/rides")
+    fetch("http://localhost:8855/api/rides")
       .then((response) => response.json())
-      .then((data) => setRides(data))
+      .then((res) =>{
+        setRides(res)
+        console.log(res);
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+  // useEffect(()=>{
+
+  //   Axios.get(`http://localhost:8001/api/rides`)
+  //   .then((res) => {
+  //     setRides(res.data)
+  //     console.log(data);
+  //   })
+  //   .catch((err)=>console.log(err))
+  // }, []);
 
   const handleBookRide = (rideId) => {
     // Implement your booking logic here, based on the ride ID
-    console.log(`Booking ride with ID ${rideId}`);
+    toast.success('Ride Request sent Successfully');
+
+    Axios.post(`http://localhost:8300/api/requestRide`, {
+      rideId  
+  })
+    .then((res)=>console.log(res.data))
+
+    .catch((err)=>console.log(err))
+    
   };
 
-  return (
-    <div className="ride-table-container">
-      <center>
-        <h2>Available Rides</h2>
-      </center>
+  const returnvalue = <div className="ride-cards-container">
+  <center>
+    <h2>Available Rides</h2>
+  </center>
+  <div className="ride-cards">
+    {rides.map((ride, index) => (
+      <div key={index} className="ride-card">
+        <h3>{ride.StartLocation} to {ride.Destination}</h3>
+        <p>Date: {ride.Date}</p>
+        <p>Time: {ride.Time}</p>
+        <p>Seats Available: {ride.SeatsAvailable}</p>
+        <p>Driver: {ride.DriverName}</p>
+        <button id={ride.RideId} className="ridebutton" onClick={() => handleBookRide(ride.RideId)}>
+          Request Ride
+        </button>
+      </div>
+    ))}
+  </div>
+</div>;
 
-      <table className="ride-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>StartLocation</th>
-            <th>Destination</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>SeatsAvailable</th>
-            <th>DriverName</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rides.map((ride) => (
-            <tr key={ride.id}>
-              <td>{ride.id}</td>
-              <td>{ride.StartLocation}</td>
-              <td>{ride.Destination}</td>
-              <td>{ride.Date}</td>
-              <td>{ride.Time}</td>
-              <td className="adjust">{ride.SeatsAvailable}</td>
-              <td>{ride.DriverName}</td>
-              <td>
-                <button onClick={() => handleBookRide(ride.id)}>
-                  Book Ride
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+  return (
+    returnvalue
   );
 }
 

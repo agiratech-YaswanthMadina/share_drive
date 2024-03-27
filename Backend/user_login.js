@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+const UserSchema = require('./models/user');
+const cors = require("cors");
 // Connect to MongoDB
 mongoose.connect("mongodb://localhost:27017/user_login");
 const db = mongoose.connection;
@@ -18,14 +19,37 @@ const Ride = mongoose.model("UserLogin", rideSchema);
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
-app.post("/api/user_login", async (req, res) => {
+// app.post("/api/user_login", async (req, res) => {
+//   try {
+//     const newRide = new Ride(req.body);
+//     await newRide.save();
+//     res.status(201).json(newRide);
+//   } catch (err) {
+//     res.status(400).json({ message: err.message });
+//   }
+// });
+
+app.post("/api/user_login", async (req, res, next) => {
+  const { name, mailId, phone, employeeId } = req.body;
+  console.log(req?.body)
   try {
-    const newRide = new Ride(req.body);
-    await newRide.save();
-    res.status(201).json(newRide);
+    const user = await UserSchema.findOne({ employeeId: employeeId });
+    if (!user) {
+      const u= new UserSchema({
+        mail: mailId,
+        name: name,
+        phoneNumber: phone,
+        employeeId: employeeId,
+      });
+      await u.save();
+      console.log(u);
+    }
+    res.status(200).send({ message: "inserted details successful" , response: user});
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    console.log(err);
+    res.status(500).send({ message: "something went wrong" });
   }
 });
 

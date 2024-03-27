@@ -1,0 +1,9 @@
+.loginimage {
+  background-image: url("./about-us-banner.jpg");
+  background-size: cover;
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

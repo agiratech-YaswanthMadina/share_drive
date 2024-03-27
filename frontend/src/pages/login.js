@@ -1,14 +1,13 @@
 import { PublicClientApplication } from "@azure/msal-browser";
 const button = document.getElementById("btn");
 
-1
 
 const msalConfig = {
   auth: {
     clientId: "d1e79748-03e2-4730-ad96-cfb8ef48b58c",
     authority:
       "https://login.microsoftonline.com/2a4a5a22-099a-4115-86f7-35b1367f0ea9",
-    redirectUri: "http://localhost:9000/",
+    redirectUri: "http://localhost:6100/",
   },
   cache: {
     cacheLocation: "localStorage",
@@ -23,7 +22,7 @@ const login = async () => {
   const response = await msalInstance.loginPopup({
     scopes: ["user.read"],
     prompt: "select_account",
-    redirectUri: "http://localhost:9000/",
+    redirectUri: "http://localhost:6100/",
     popup: true,
   });
  
@@ -60,27 +59,27 @@ const login = async () => {
         .then((res) => {
           console.log(res);
           localStorage.setItem("employee-id", res.id);
-          window.location.href='/';
-          // fetch("http://localhost:8000/users", {
-          //   method: "post",
-          //   headers: {
-          //     "Content-Type": "application/json",
-          //   },
+          
+           return fetch("http://localhost:5000/api/user_login", {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+            },
  
-          //   body: JSON.stringify({
-          //     employeeId: res.id,
-          //     mailId: res.mail,
-          //     phone: res.mobilePhone,
-          //     name: res.displayName,
-          //   }),
-          // })
-          //   .then(() => {
+            body: JSON.stringify({
+              employeeId: res.id,
+              mailId: res.mail,
+              phone: res.mobilePhone,
+              name: res.displayName,
+            }),
+          })
+            .then(() => {
                 
-          //     window.location.href = "/";
               
               
-          //   })
-            // .catch((err) => console.log(err));
+              
+            })
+            .catch((err) => console.log(err));
         });
     })
     .catch(async (error) => {
@@ -98,5 +97,3 @@ button.addEventListener("click", () => {
 })
  
 // module.exports.login = login;
-
-

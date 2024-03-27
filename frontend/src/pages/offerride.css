@@ -5,8 +5,10 @@ body {
 }
 
 .contact {
-    width: 80%;
-    margin: 50px auto;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: content-box;
+    background: linear-gradient(to right, rgb(248, 248, 108), white);
 }
 
 .contact h2 {
@@ -48,3 +50,17 @@ body {
 .contact form button:hover {
     background-color: #0056b3;
 }
+.rideid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.input{
+    width: 150px;
+    margin-top: 12px;
+}
+.buttonalignment{
+    margin-bottom: 7px;
+}
+

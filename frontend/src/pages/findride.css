@@ -1,0 +1,87 @@
+.contact-section {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 10px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.ride-cards-container {
+  padding: 30px;
+  height: 100vh;
+  background: linear-gradient(to right, rgb(248, 248, 108), white);
+}
+
+.ride-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.ride-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.ride-card h3 {
+  margin-top: 0;
+}
+
+.ride-card button {
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.ride-card button:hover {
+  background-color: #0056b3;
+}
